@@ -10,17 +10,23 @@ struct Node *prev;
     
 }*head=NULL;
 
-void create(int a[],int n){
+void create(){
     struct Node *t,*last;
-    
+    int n;
     head=(struct Node *)malloc(sizeof(struct Node));
-    head->data=a[0];
+    printf("Enter the no. of nodes:");
+    scanf("%d",&n);
+    printf("Enter first data:\n");
+    scanf("%d",&head->first);
     head->next=head->prev=head;
     last=head;
     int i;
-    for(i=1;i<n;i++){
+    printf("Enter remaining nodes");
+    for(i=1;i<n;i++)
+    {
         t=(struct Node *)malloc(sizeof(struct Node));
-        t->data=a[i];
+        scanf("%d",t->data);
+    }   
     last->next=t;
     t->prev=last;
     t->next=head;
@@ -106,7 +112,7 @@ int delete(struct Node *p, int index){
 }
 int main(){
     int a[]={1,2,3,4,5};
-    create(a,5);
+    create();
     display(head);
     printf("\n length of the LL is \n %d \n",count(head));
     insert(head,2,100);
